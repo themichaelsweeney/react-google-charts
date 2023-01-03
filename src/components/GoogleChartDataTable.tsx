@@ -171,25 +171,25 @@ export class GoogleChartDataTableInner extends React.Component<
     const columnCount = dataTable.getNumberOfColumns();
 
     const viewColumns = Array(columnCount)
-    .fill(0)
-    .map((c, i) => {
-      const columnID = this.getColumnID(dataTable, i);
-      if (this.state.hiddenColumns.includes(columnID)) {
-        return {
-          label: dataTable.getColumnLabel(i),
-          type: dataTable.getColumnType(i),
-          calc: () => null,
-        };
-      } else {
-        return i;
-      }
-    });
+      .fill(0)
+      .map((c, i) => {
+        const columnID = this.getColumnID(dataTable, i);
+        if (this.state.hiddenColumns.includes(columnID)) {
+          return {
+            label: dataTable.getColumnLabel(i),
+            type: dataTable.getColumnType(i),
+            calc: () => null,
+          };
+        } else {
+          return i;
+        }
+      });
     const chart = googleChartWrapper.getChart();
     if (googleChartWrapper.getChartType() === "Timeline") {
       chart && chart.clearChart();
     }
     googleChartWrapper.setChartType(chartType);
-    googleChartWrapper.setOptions(options);
+    googleChartWrapper.setOptions(options || {});
     const viewTable = new google.visualization.DataView(dataTable);
     viewTable.setColumns(viewColumns);
     googleChartWrapper.setDataTable(viewTable);
