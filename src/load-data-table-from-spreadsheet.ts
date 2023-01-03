@@ -1,4 +1,4 @@
-import { GoogleViz } from "./types";
+import {GoogleViz} from "./types";
 
 export const loadDataTableFromSpreadSheet = async (
   googleViz: GoogleViz,

@@ -43,6 +43,7 @@ export type GoogleChartLoader = {
   ) => void;
   setOnLoadCallback: (callback: () => void) => void;
 };
+
 export interface ChartWrapperProps {
   chartType: GoogleChartWrapperChartType;
   containerId?: string;
@@ -153,6 +154,7 @@ export interface ChartWrapperOptions {
   query?: string;
   refreshInterval?: number;
   view: any[] | {};
+
   [otherOptionKey: string]: any;
 }
 
@@ -177,7 +179,7 @@ export type GoogleChartControlProp = {
 };
 
 export type GoogleChartWrapper = {
-  new (chartWrapperOptions: Partial<ChartWrapperOptions>): GoogleChartWrapper;
+  new(chartWrapperOptions: Partial<ChartWrapperOptions>): GoogleChartWrapper;
   draw: (chartArgs?: ChartWrapperProps) => any;
   toJSON: () => string;
   clone: () => GoogleChartWrapper;
@@ -280,23 +282,23 @@ export enum GoogleDataTableColumnRoleType {
 
 export type GoogleDataTableColumn =
   | {
-      type: GoogleDataTableColumnType;
-      label?: string; //  A label for the column.
-      role?: GoogleDataTableColumnRoleType;
-      pattern?: string;
-      p?: {};
-      id?: string;
-    }
+  type: GoogleDataTableColumnType;
+  label?: string; //  A label for the column.
+  role?: GoogleDataTableColumnRoleType;
+  pattern?: string;
+  p?: {};
+  id?: string;
+}
   | string;
 
 // Ref : https://developers.google.com/chart/interactive/docs/reference#dataparam
 
 export type GoogleDataTableCell =
   | {
-      v?: any; // The cell value. Type should match DataTableColumn type field
-      f?: string; // A string version of the v value, formatted for display.
-      p?: {};
-    }
+  v?: any; // The cell value. Type should match DataTableColumn type field
+  f?: string; // A string version of the v value, formatted for display.
+  p?: {};
+}
   | string
   | number
   | boolean
@@ -324,18 +326,18 @@ export type GoogleDataTableRowFilter = {
 export type GoogleDataTableSortColumns =
   | number
   | {
-      column: number;
-      desc: boolean;
-    }
+  column: number;
+  desc: boolean;
+}
   | number[]
   | {
-      column: number;
-      desc: boolean;
-    }[];
+  column: number;
+  desc: boolean;
+}[];
 
 export type GoogleDataTable = {
   // https://developers.google.com/chart/interactive/docs/reference#dataparam
-  new (dataParam: any): GoogleDataTable;
+  new(dataParam: any): GoogleDataTable;
   addColumn: (column: GoogleDataTableColumn) => number;
   addRow: (row?: GoogleDataTableRow) => number;
   addRows: (rows?: GoogleDataTableRow[] | number[] | any[]) => number;
@@ -455,10 +457,10 @@ export type GoogleChartOptions = {
   legend?:
     | string
     | {
-        position?: string;
-        maxLines?: number;
-        [otherOptionKey: string]: any;
-      };
+    position?: string;
+    maxLines?: number;
+    [otherOptionKey: string]: any;
+  };
   curveType?: string;
   showTooltip?: boolean;
   showInfoWindow?: boolean;
@@ -586,15 +588,15 @@ export type GoogleChartDashboard = {
 };
 
 export type ReactGoogleChartDashboardRender = ({
-  renderControl,
-  renderChart,
-  renderToolbar,
-}: {
+                                                 renderControl,
+                                                 renderChart,
+                                                 renderToolbar,
+                                               }: {
   renderControl: (
     filter: ({
-      control,
-      controlProp,
-    }: {
+               control,
+               controlProp,
+             }: {
       control: GoogleChartControl;
       controlProp: GoogleChartControlProp;
     }) => boolean
